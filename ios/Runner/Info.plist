@@ -67,5 +67,50 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+<<<<<<< HEAD
+=======
+	<key>NSCameraUsageDescription</key>
+    <string>Camera permission is required for barcode scanning.</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+
+                <string>1844323602542989</string>
+            </array>
+        </dict>
+    </array>
+
+    <key>FacebookAppID</key>
+
+
+    <string>1844323602542989</string>
+    <key>FacebookDisplayName</key>
+
+
+    <string>Nero Digital</string>
+
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-share-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
+    <!-- Google Sign-in Section -->
+    <key>CFBundleURLTypes</key>
+    <array>
+    	<dict>
+    		<key>CFBundleTypeRole</key>
+    		<string>Editor</string>
+    		<key>CFBundleURLSchemes</key>
+    		<array>
+    			<string>com.googleusercontent.apps.587358237521-5ho164do4o5disn23jlr4r4dormodp0i</string>
+    		</array>
+    	</dict>
+    </array>
+    <!-- End of the Google Sign-in Section -->
+>>>>>>> 05344abdf7c53660d5137226ebf98b877238196a
 </dict>
 </plist>

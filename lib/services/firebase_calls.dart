@@ -52,3 +52,6 @@ Future<Null> completeOrder(String uidString) async {
   final DocumentReference document = refOrders.document();
   document.setData(<String, dynamic>{'uid': uidString});
 }
+
+
+
