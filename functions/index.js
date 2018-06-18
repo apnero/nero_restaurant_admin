@@ -51,7 +51,7 @@ exports.sendOrder = functions.firestore
                     snapshot.ref.update({'inCart': false});
                 })
                 console.log('There');
-                return result;
+                return;
             })
             .catch((error) => {
                 console.log('Error sending message:', error);
@@ -60,6 +60,7 @@ exports.sendOrder = functions.firestore
 
             return;
     });
+
 
 
 
@@ -82,9 +83,7 @@ exports.sendNotificationOnCreate = functions.firestore
         },
     };
 
-    new Promise(function(resolve, reject) {
-
-        var query = db.collection('Users').get()
+    return  Promise(function(resolve, reject){var query = db.collection('Users').get()
             .then(snapshot => {
                 snapshot.forEach(snapshot => {
                     tokens.push(snapshot.get('pushToken'));
@@ -99,9 +98,8 @@ exports.sendNotificationOnCreate = functions.firestore
             .catch((error) => {
                 console.log('Error sending message:', error);
                 throw new Error('Error sending message');
-            });
+            })
             
     });
-
-
 });
+

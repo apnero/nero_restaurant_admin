@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
         ),
         body: new StreamBuilder(
             stream: refSelections
-                .where('status', isEqualTo: 'working')
+                .where('status',isEqualTo: 'working')
                 .orderBy('date', descending: false)
                 .snapshots(),
             builder: (context, snapshot) {

@@ -33,7 +33,9 @@ Future loadUsers() async {
 }
 
 Future saveUser(FirebaseUser firebaseUser, String pushToken) async {
-  DocumentSnapshot userRecord = await refUsers.document(firebaseUser.uid).get();
+  DocumentSnapshot userRecord;
+  if (firebaseUser != null)
+    userRecord = await refUsers.document(firebaseUser.uid).get();
   if (userRecord.data == null) {
     // no user record exists, time to create
 

@@ -17,9 +17,17 @@ class SelectionListItem extends StatelessWidget {
     return newList;
   }
 
+  Color _nameToColor(String name) {
+    assert(name.length > 1);
+    final int hash = name.hashCode & 0xffff;
+    final double hue = 360.0 * hash / (1 << 15);
+    return new HSVColor.fromAHSV(1.0, hue, 0.4, 0.90).toColor();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: _nameToColor(selection.uid.toString()),
         shape: const RoundedRectangleBorder(
             borderRadius: const BorderRadius.only(
           topLeft: const Radius.circular(16.0),

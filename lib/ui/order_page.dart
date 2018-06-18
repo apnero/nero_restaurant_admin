@@ -33,9 +33,38 @@ class OrderPage extends StatelessWidget {
             icon: new Icon(Icons.payment), //page.fabIcon,
             label: Text('Complete'),
             onPressed: () {
-                completeOrder(uid);
-                Scaffold.of(context).showSnackBar(
-                    new SnackBar(content: new Text("The Order Is Finished")));
+              return showDialog<Null>(
+                context: context,
+                barrierDismissible: false, // user must tap button!
+                builder: (BuildContext context) {
+                  return new AlertDialog(
+                    title: new Text('Complete Order'),
+                    content: new SingleChildScrollView(
+                      child: new ListBody(
+                        children: <Widget>[
+                          new Text('The Order is Finished?'),
+                        ],
+                      ),
+                    ),
+                    actions: <Widget>[
+                      new FlatButton(
+                        child: new Text('Cancel'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      new FlatButton(
+                        child: new Text('OK'),
+                        onPressed: () {
+                          completeOrder(uid);
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
               Navigator.pop(context);
 
             }));
