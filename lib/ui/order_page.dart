@@ -34,8 +34,8 @@ class OrderPage extends StatelessWidget {
             label: Text('Complete'),
             onPressed: () {
                 completeOrder(uid);
-
-              Navigator.pop(context);
+                Scaffold.of(context).showSnackBar(
+                    new SnackBar(content: new Text("The Order Is Finished")));
               Navigator.pop(context);
 
             }));

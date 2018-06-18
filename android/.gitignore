@@ -8,3 +8,5 @@
 /build
 /captures
 GeneratedPluginRegistrant.java
+google-services.json
+GoogleService-Info.plist

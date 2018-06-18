@@ -49,7 +49,7 @@ class SendTextState extends State<SendText> {
           child: new Column(
 
             children: <Widget>[
-              const SizedBox(height: 10.0),
+              const SizedBox(height: 5.0),
               new TextFormField(
                 controller: titleController,
                 decoration: const InputDecoration(
@@ -59,7 +59,7 @@ class SendTextState extends State<SendText> {
                 ),
                 maxLines: 1,
               ),
-              const SizedBox(height: 24.0),
+              const SizedBox(height: 11.0),
               new TextFormField(
                 controller: messageController,
                 decoration: const InputDecoration(
@@ -69,12 +69,13 @@ class SendTextState extends State<SendText> {
                 ),
                 maxLines: 3,
               ),
-              const SizedBox(height: 47.0),
+              const SizedBox(height: 7.0),
               new Center(
                 child: new RaisedButton(
                   child: const Text('SUBMIT'),
                   onPressed: () {
                     sendNotification();
+                    Navigator.pop(context);
                     showModalBottomSheet<void>(context: context, builder: (BuildContext context) {
                       return new Container(
                           child: new Padding(

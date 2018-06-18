@@ -28,7 +28,7 @@ class SelectionListItem extends StatelessWidget {
           bottomRight: const Radius.circular(16.0),
         )),
         child: new Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 4.0),
+            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
             child: new Column(children: <Widget>[
               new Row(children: <Widget>[
                 new Container(
