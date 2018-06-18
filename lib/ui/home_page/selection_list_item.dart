@@ -36,7 +36,7 @@ class SelectionListItem extends StatelessWidget {
           bottomRight: const Radius.circular(16.0),
         )),
         child: new Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: new Column(children: <Widget>[
               new Row(children: <Widget>[
                 new Container(
@@ -50,7 +50,7 @@ class SelectionListItem extends StatelessWidget {
                                 getItemFromDocId(selection.itemDocId).url)))),
                 new Container(
                     height: 140.0,
-                    padding: const EdgeInsets.only(left: 10.0, top: 5.0),
+                    padding: const EdgeInsets.only(left: 10.0, top: 4.0),
                     child: new Row(children: <Widget>[
                       new Padding(
                           padding: new EdgeInsets.only(left: 7.0, right: 20.0),
