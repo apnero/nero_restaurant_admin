@@ -7,6 +7,7 @@ import 'package:nero_restaurant_admin/ui/home_page/home_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:nero_restaurant_admin/services/firebase_calls.dart';
 import 'package:nero_restaurant_admin/ui/send_text.dart';
+import 'package:nero_restaurant_admin/ui/style.dart';
 
 
 
@@ -18,9 +19,7 @@ class NeroRestaurant extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Nero Digital',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: mainTheme,
       home: new LoginPage(title: 'Nero Digital'),
       routes: <String, WidgetBuilder>{
         // Set named routes

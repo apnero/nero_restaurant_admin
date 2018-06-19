@@ -51,6 +51,7 @@ Future saveUser(FirebaseUser firebaseUser, String pushToken) async {
 }
 
 Future<Null> completeOrder(String uidString) async {
+  globals.recentOrders.addAll({uidString: DateTime.now()});
   final DocumentReference document = refOrders.document();
   document.setData(<String, dynamic>{'uid': uidString});
 }

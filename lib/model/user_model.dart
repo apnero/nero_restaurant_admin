@@ -4,12 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class User {
   const User(
-      {this.id,
-      this.photoUrl,
-      this.email,
-      this.displayName,
-      this.admin,
-      this.pushToken});
+      {
+        this.id,
+        this.photoUrl,
+        this.email,
+        this.displayName,
+        this.admin,
+        this.pushToken,
+        this.points,});
 
   final String email;
   final String id;
@@ -17,6 +19,7 @@ class User {
   final String displayName;
   final bool admin;
   final String pushToken;
+  final double points;
 
   factory User.fromDocument(DocumentSnapshot document) {
     return new User(
@@ -26,9 +29,11 @@ class User {
       displayName: document['displayName'],
       admin: document['admin'],
       pushToken: document['pushToken'],
+      points: document['points'],
     );
   }
 }
+
 
 String getDisplayName(String id) {
   String name = '';

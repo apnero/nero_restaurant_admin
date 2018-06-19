@@ -44,7 +44,7 @@ class SendTextState extends State<SendText> {
         ),
       ),
       new SliverPadding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 30.0),
           sliver: SliverList(
         delegate: new SliverChildListDelegate(<Widget>[
           const SizedBox(height: 15.0),

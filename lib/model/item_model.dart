@@ -1,20 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nero_restaurant_admin/model/globals.dart' as globals;
 
-
 class Item {
-  const Item(
-      {
-        this.id,
-        this.docId,
-        this.name,
-        this.description,
-        this.heading,
-        this.category,
-        this.subCategory,
-        this.featured,
-        this.options,
-        this.url});
+  const Item({
+    this.id,
+    this.docId,
+    this.name,
+    this.description,
+    this.heading,
+    this.category,
+    this.subCategory,
+    this.featured,
+    this.options,
+    this.url,
+    this.price,
+  });
 
   final int id;
   final String docId;
@@ -26,6 +26,7 @@ class Item {
   final String featured;
   final List<dynamic> options;
   final String url;
+  final double price;
 
   factory Item.fromDocument(DocumentSnapshot document) {
     return new Item(
@@ -38,18 +39,15 @@ class Item {
       subCategory: document['subCategory'],
       featured: document['featured'],
       options: document['options'],
-      url: document['url']
+      url: document['url'],
+      price: document['price'],
     );
   }
-
-
 }
 
-
-Item getItemFromDocId(String docId){
-
+Item getItemFromDocId(String docId) {
   Item thisItem;
-  globals.allItems.forEach(( item) {
+  globals.allItems.forEach((item) {
     if (item.docId == docId) thisItem = item;
   });
   return thisItem;
