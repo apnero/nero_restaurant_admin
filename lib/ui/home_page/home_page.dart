@@ -25,39 +25,35 @@ class _HomePageState extends State<HomePage> {
         ),
         body: new StreamBuilder(
             stream: refSelections
-                .where('status',isEqualTo: 'working')
+                .where('status', isEqualTo: 'working')
                 .orderBy('date', descending: false)
                 .snapshots(),
             builder: (context, snapshot) {
-              if (!snapshot.hasData || snapshot.data.documents.length == 0) return new Center(child: Image.asset(
-                'assets/images/empty.png',
-                width: 265.0,
-                fit: BoxFit.fitHeight,
-              ));
-              return globals.allItems != null && globals.allUsers != null ? new ListView.builder(
-                  itemCount: snapshot.data.documents.length,
-                  padding: const EdgeInsets.only(bottom: 2.0, top: 8.0),
-                  itemBuilder: (context, index) => new SelectionListItem(
-                        context: context,
-                        selection: Selection
-                            .fromSelectionDoc(snapshot.data.documents[index]),
-                    fromHomePage: true,
-                      )): new Container();
+              if (!snapshot.hasData || snapshot.data.documents.length == 0)
+                return new Center(
+                    child: Image.asset(
+                  'assets/images/empty.png',
+                  width: 265.0,
+                  fit: BoxFit.fitHeight,
+                ));
+              return globals.allItems != null && globals.allUsers != null
+                  ? new ListView.builder(
+                      itemCount: snapshot.data.documents.length,
+                      padding: const EdgeInsets.only(bottom: 2.0, top: 8.0),
+                      itemBuilder: (context, index) => new SelectionListItem(
+                            context: context,
+                            selection: Selection.fromSelectionDoc(
+                                snapshot.data.documents[index]),
+                            fromHomePage: true,
+                          ))
+                  : new Container();
             }),
         floatingActionButton: new FloatingActionButton.extended(
-          icon: new Icon(Icons.scanner),
-          key: new ValueKey<Key>(new Key('1')),
-          label: new Text('Scan'),
-          backgroundColor: Colors.blue,
-          onPressed: (){
-            Navigator.push(
-              context,
-              new MaterialPageRoute(
-                builder: (context) => new OrderPage(uid:'xTFOUh007XbAqV83MrH1WdCSjhq2'),
-              ),
-            );
-          }//=> scan(),
-        ),
+            icon: new Icon(Icons.scanner),
+            key: new ValueKey<Key>(new Key('1')),
+            label: new Text('Scan'),
+            backgroundColor: Colors.blue,
+            onPressed: () => scan()),
         drawer: new Drawer(
           // Add a ListView to the drawer. This ensures the user can scroll
           // through the options in the Drawer if there isn't enough vertical
