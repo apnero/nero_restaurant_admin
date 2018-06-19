@@ -1,3 +1,4 @@
+import 'package:nero_restaurant_admin/model/globals.dart' as globals;
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:barcode_scan/barcode_scan.dart';
@@ -33,21 +34,29 @@ class _HomePageState extends State<HomePage> {
                 width: 265.0,
                 fit: BoxFit.fitHeight,
               ));
-              return new ListView.builder(
+              return globals.allItems != null && globals.allUsers != null ? new ListView.builder(
                   itemCount: snapshot.data.documents.length,
                   padding: const EdgeInsets.only(bottom: 2.0, top: 8.0),
                   itemBuilder: (context, index) => new SelectionListItem(
                         context: context,
                         selection: Selection
                             .fromSelectionDoc(snapshot.data.documents[index]),
-                      ));
+                    fromHomePage: true,
+                      )): new Container();
             }),
         floatingActionButton: new FloatingActionButton.extended(
           icon: new Icon(Icons.scanner),
           key: new ValueKey<Key>(new Key('1')),
           label: new Text('Scan'),
           backgroundColor: Colors.blue,
-          onPressed: () => scan(),
+          onPressed: (){
+            Navigator.push(
+              context,
+              new MaterialPageRoute(
+                builder: (context) => new OrderPage(uid:'xTFOUh007XbAqV83MrH1WdCSjhq2'),
+              ),
+            );
+          }//=> scan(),
         ),
         drawer: new Drawer(
           // Add a ListView to the drawer. This ensures the user can scroll

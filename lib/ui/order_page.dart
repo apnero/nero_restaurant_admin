@@ -24,6 +24,7 @@ class OrderPage extends StatelessWidget {
                     context: context,
                     selection: Selection
                         .fromSelectionDoc(snapshot.data.documents[index]),
+                    fromHomePage: false,
                   ));
             }),
         floatingActionButton: new FloatingActionButton.extended(

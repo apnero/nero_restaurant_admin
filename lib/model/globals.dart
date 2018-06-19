@@ -5,3 +5,4 @@ import 'package:nero_restaurant_admin/model/user_model.dart';
 
 List<Item> allItems;
 List<User> allUsers;
+Map<String,DateTime> recentOrders = new Map<String,DateTime>();
