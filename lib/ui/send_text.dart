@@ -8,7 +8,7 @@ class SendText extends StatefulWidget {
 }
 
 class SendTextState extends State<SendText> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   final refNotifications = Firestore.instance.collection('Notifications');
   final titleController = new TextEditingController();
   final messageController = new TextEditingController();
@@ -46,50 +46,60 @@ class SendTextState extends State<SendText> {
       new SliverPadding(
           padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 30.0),
           sliver: SliverList(
-        delegate: new SliverChildListDelegate(<Widget>[
-          const SizedBox(height: 15.0),
-          new TextFormField(
-            controller: titleController,
-            decoration: const InputDecoration(
-                border: const OutlineInputBorder(),
-                labelText: 'Title',
-                suffixStyle: const TextStyle(color: Colors.green)),
-            maxLines: 1,
-          ),
-          const SizedBox(height: 20.0),
-          new TextFormField(
-            controller: messageController,
-            decoration: const InputDecoration(
-              border: const OutlineInputBorder(),
-              hintText: 'What do you want to say?',
-              labelText: 'Message',
-            ),
-            maxLines: 3,
-          ),
-          const SizedBox(height: 80.0),
-          new Center(
-            child: new RaisedButton(
-                child: const Text('SUBMIT'),
-                onPressed: () {
-                  sendNotification();
-                  Navigator.pop(context);
-                  showModalBottomSheet<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return new Container(
-                            child: new Padding(
-                                padding: const EdgeInsets.all(32.0),
-                                child: new Text(
-                                    'The Notification has been sent.',
-                                    textAlign: TextAlign.center,
-                                    style: new TextStyle(
-                                        color: Theme.of(context).accentColor,
-                                        fontSize: 24.0))));
-                      });
-                }),
-          ),
-        ]),
-      )
-      )]));
+              delegate: new SliverChildListDelegate(
+            <Widget>[
+              new Center(
+                  child: new Container(
+                      width: 400.0,
+                      child: new Column(children: <Widget>[
+                        const SizedBox(height: 15.0),
+                        new TextFormField(
+                          controller: titleController,
+                          decoration: const InputDecoration(
+                              border: const OutlineInputBorder(),
+                              labelText: 'Title',
+                              suffixStyle:
+                                  const TextStyle(color: Colors.green)),
+                          maxLines: 1,
+                        ),
+                        const SizedBox(height: 20.0),
+                        new TextFormField(
+                          controller: messageController,
+                          decoration: const InputDecoration(
+                            border: const OutlineInputBorder(),
+                            hintText: 'What do you want to say?',
+                            labelText: 'Message',
+                          ),
+                          maxLines: 3,
+                        ),
+                        const SizedBox(height: 80.0),
+                        new Center(
+                          child: new RaisedButton(
+                              child: const Text('SUBMIT'),
+                              onPressed: () {
+                                sendNotification();
+                                Navigator.pop(context);
+                                showModalBottomSheet<void>(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return new Container(
+                                          child: new Padding(
+                                              padding:
+                                                  const EdgeInsets.all(32.0),
+                                              child: new Text(
+                                                  'The Notification has been sent.',
+                                                  textAlign: TextAlign.center,
+                                                  style: new TextStyle(
+                                                      color: Theme
+                                                          .of(context)
+                                                          .accentColor,
+                                                      fontSize: 24.0))));
+                                    });
+                              }),
+                        ),
+                      ])))
+            ],
+          )))
+    ]));
   }
 }
