@@ -65,8 +65,8 @@ class _StructurePageState extends State<StructurePage> {
                     getItemFromDocId(selection.itemDocId).name,
                     style: Theme.of(context).textTheme.title,
                   ),
-              Container(width:400.0,
-              height: 90.0,
+              Container(width:350.0,
+//              height: 90.0,
               child: Center(child: Wrap(
                 spacing: 3.0,
                 runSpacing: 2.0,
@@ -102,10 +102,10 @@ class _StructurePageState extends State<StructurePage> {
             padding: EdgeInsets.all(10.0),
             decoration: widget.color
                 ? const BoxDecoration(
-                    color: Colors.black54, //.color,
+                    color: Colors.indigo, //.color,
                   )
                 : const BoxDecoration(
-                    color: Colors.black12, //.color,
+                    color: Colors.blueGrey, //.color,
                   ),
             child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
