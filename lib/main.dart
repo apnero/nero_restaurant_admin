@@ -48,8 +48,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    loadItems().then((status) => setState(() {}));
-    loadUsers().then((status) => setState(() {}));
+    FirebaseCalls.loadItems().then((status) => setState(() {}));
+    FirebaseCalls.loadUsers().then((status) => setState(() {}));
 
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) {
@@ -109,12 +109,12 @@ class _LoginPageState extends State<LoginPage> {
     _currentUser?.getIdToken(refresh: true);
 
     if(_currentUser != null)
-      saveUser(_currentUser, pushToken);
+      FirebaseCalls.saveUser(_currentUser, pushToken);
 
     _listener = _auth.onAuthStateChanged.listen((FirebaseUser user) {
       setState(() {
         _currentUser = user;
-        saveUser(_currentUser, pushToken);
+        FirebaseCalls.saveUser(_currentUser, pushToken);
       });
     });
   }

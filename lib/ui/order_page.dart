@@ -15,7 +15,6 @@ class OrderPage extends StatefulWidget {
 
 class OrderPageState extends State<OrderPage> {
   final _controller = new TextEditingController();
-  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
 
   @override
@@ -49,7 +48,7 @@ class OrderPageState extends State<OrderPage> {
             new FlatButton(
               child: new Text('OK'),
               onPressed: () {
-                completeOrder(widget.uid,
+                FirebaseCalls.completeOrder(widget.uid,
                     globals.currentOrders[getDisplayName(widget.uid)], 0.0);
                 Navigator.pop(context);
                 Navigator.pop(context);
@@ -98,7 +97,7 @@ class OrderPageState extends State<OrderPage> {
             new FlatButton(
               child: new Text('OK'),
               onPressed: () {
-                completeOrder(widget.uid, [],
+                FirebaseCalls.completeOrder(widget.uid, [],
                     double.parse(_controller.text));
                 Navigator.pop(context);
                 Navigator.pop(context);

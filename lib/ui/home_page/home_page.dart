@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Widget _body(BuildContext context) {
     return new FutureBuilder<Map<String, List<Selection>>>(
-        future: getOrders(),
+        future: FirebaseCalls.getOrders(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
