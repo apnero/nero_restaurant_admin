@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8476ddd6-8cff-40ff-8e23-ce153d7c941b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" afterPath="$PROJECT_DIR$/lib/main.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/home_page/home_page.dart" afterPath="$PROJECT_DIR$/lib/ui/home_page/home_page.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/services/firebase_calls.dart" afterPath="$PROJECT_DIR$/lib/services/firebase_calls.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -22,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="home_page.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home_page.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/ui/home_page/home_page.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1260">
-              <caret line="141" column="5" lean-forward="false" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
+            <state relative-caret-position="308">
+              <caret line="31" column="21" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
               <folding>
                 <element signature="e#0#69#0" expanded="true" />
               </folding>
@@ -71,18 +70,18 @@
       <file leaf-file-name="user_model.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/model/user_model.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="52" column="31" lean-forward="false" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+            <state relative-caret-position="532">
+              <caret line="47" column="3" lean-forward="true" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="firebase_calls.dart" pinned="false" current-in-tab="false">
+      <file leaf-file-name="firebase_calls.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/services/firebase_calls.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1532">
-              <caret line="101" column="32" lean-forward="false" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
+            <state relative-caret-position="495">
+              <caret line="55" column="12" lean-forward="true" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -195,11 +194,11 @@
         <option value="$PROJECT_DIR$/lib/model/item_model.dart" />
         <option value="$PROJECT_DIR$/lib/ui/home_page/order_structure_page.dart" />
         <option value="$PROJECT_DIR$/lib/ui/home_page/structure_page.dart" />
-        <option value="$PROJECT_DIR$/lib/model/user_model.dart" />
-        <option value="$PROJECT_DIR$/lib/services/firebase_calls.dart" />
         <option value="$PROJECT_DIR$/lib/ui/order_page.dart" />
         <option value="$PROJECT_DIR$/lib/main.dart" />
         <option value="$PROJECT_DIR$/lib/ui/home_page/home_page.dart" />
+        <option value="$PROJECT_DIR$/lib/model/user_model.dart" />
+        <option value="$PROJECT_DIR$/lib/services/firebase_calls.dart" />
       </list>
     </option>
   </component>
@@ -492,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1529873783141</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="color">
+      <created>1529874277015</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1529874277015</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -904,22 +910,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/user_model.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="52" column="31" lean-forward="false" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/services/firebase_calls.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1532">
-          <caret line="101" column="32" lean-forward="false" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/globals.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -948,11 +938,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/ui/home_page/home_page.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="141" column="5" lean-forward="false" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
+        <state relative-caret-position="308">
+          <caret line="31" column="21" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
           <folding>
             <element signature="e#0#69#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/user_model.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="47" column="3" lean-forward="true" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/services/firebase_calls.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="55" column="12" lean-forward="true" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
