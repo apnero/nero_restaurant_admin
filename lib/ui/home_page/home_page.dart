@@ -8,7 +8,6 @@ import 'package:nero_restaurant_admin/model/selection_model.dart';
 import 'package:nero_restaurant_admin/services/firebase_calls.dart';
 import 'package:nero_restaurant_admin/ui/home_page/structure_page.dart';
 import 'package:nero_restaurant_admin/ui/order_page.dart';
-import 'package:nero_restaurant_admin/model/user_model.dart';
 
 class HomePage extends StatefulWidget {
   @override
