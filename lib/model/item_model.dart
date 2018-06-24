@@ -14,6 +14,7 @@ class Item {
     this.options,
     this.url,
     this.price,
+    this.active,
   });
 
   final int id;
@@ -23,10 +24,11 @@ class Item {
   final String heading;
   final String category;
   final String subCategory;
-  final String featured;
+  final bool featured;
   final List<dynamic> options;
   final String url;
   final double price;
+  final bool active;
 
   factory Item.fromDocument(DocumentSnapshot document) {
     return new Item(
@@ -41,14 +43,18 @@ class Item {
       options: document['options'],
       url: document['url'],
       price: document['price'],
+      active: document['active'],
     );
   }
 }
 
-Item getItemFromDocId(String docId) {
-  Item thisItem;
-  globals.allItems.forEach((item) {
-    if (item.docId == docId) thisItem = item;
-  });
-  return thisItem;
+class ItemMethod {
+
+  static Item getItemFromDocId(String docId) {
+    Item thisItem;
+    globals.allItems.forEach((item) {
+      if (item.docId == docId) thisItem = item;
+    });
+    return thisItem;
+  }
 }

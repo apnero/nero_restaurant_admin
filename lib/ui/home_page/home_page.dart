@@ -1,11 +1,14 @@
+import 'package:nero_restaurant_admin/model/globals.dart' as globals;
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:barcode_scan/barcode_scan.dart';
+
 import 'package:nero_restaurant_admin/model/selection_model.dart';
 import 'package:nero_restaurant_admin/services/firebase_calls.dart';
 import 'package:nero_restaurant_admin/ui/home_page/structure_page.dart';
 import 'package:nero_restaurant_admin/ui/order_page.dart';
+import 'package:nero_restaurant_admin/model/user_model.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,6 +16,31 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
+  Widget _noAdmin(BuildContext context) {
+    return new Scaffold(
+        appBar: new AppBar(
+          title: new Text('Orders'),
+        ),
+        body: Container(
+            child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Text(globals.currentUser.displayName,
+                        style: Theme.of(context).textTheme.headline),
+                Text(globals.currentUser.email,
+                        style: Theme.of(context).textTheme.headline),
+                    Text('Please request admin access.',
+                        style: Theme.of(context).textTheme.headline),
+                  ],
+                ))),
+       );
+  }
+
+
+
   Widget _body(BuildContext context) {
     return new FutureBuilder<Map<String, List<Selection>>>(
         future: FirebaseCalls.getOrders(),
@@ -40,7 +68,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return globals.currentUser!= null && globals.currentUser.admin ? new Scaffold(
       appBar: new AppBar(
         title: new Text('Orders'),
       ),
@@ -49,7 +77,7 @@ class _HomePageState extends State<HomePage> {
           icon: new Icon(Icons.scanner),
           key: new ValueKey<Key>(new Key('1')),
           label: new Text('Scan'),
-          backgroundColor: Colors.red,
+//          backgroundColor: Colors.red,
           onPressed: () =>  scan(),
 //              Navigator.push(
 //            context,
@@ -69,7 +97,7 @@ class _HomePageState extends State<HomePage> {
             new DrawerHeader(
               child: new Text('Nero Digital Admin',style: Theme.of(context).textTheme.headline),
               decoration: new BoxDecoration(
-                color: Colors.black54,
+//                color: Colors.black54,
               ),
             ),
             new ListTile(
@@ -85,7 +113,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
-    );
+    ):globals.currentUser!= null ? _noAdmin(context): new Container();
   }
 
 

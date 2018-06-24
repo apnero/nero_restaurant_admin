@@ -46,14 +46,16 @@ class User {
       points: 0.0,
     );
   }
+
+
+  static String getDisplayName(String id) {
+    String name = '';
+    globals.allUsers.forEach((user) {
+      if (user.id == id) name = user.displayName;
+    });
+    return name;
+  }
+
 }
 
 
-
-String getDisplayName(String id) {
-  String name = '';
-  globals.allUsers.forEach((user) {
-    if (user.id == id) name = user.displayName;
-  });
-  return name;
-}

@@ -19,7 +19,7 @@ class NeroRestaurant extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Nero Digital',
-      theme: mainTheme,
+      theme: ThemeData.dark(),
       home: new LoginPage(title: 'Nero Digital'),
       routes: <String, WidgetBuilder>{
         // Set named routes

@@ -14,7 +14,15 @@ class OrderPage extends StatefulWidget {
 }
 
 class OrderPageState extends State<OrderPage> {
+  String thisUserName = '';
   final _controller = new TextEditingController();
+
+
+  @override
+  void initState() {
+    thisUserName = User.getDisplayName(widget.uid);
+    super.initState();
+  }
 
 
   @override
@@ -49,7 +57,7 @@ class OrderPageState extends State<OrderPage> {
               child: new Text('OK'),
               onPressed: () {
                 FirebaseCalls.completeOrder(widget.uid,
-                    globals.currentOrders[getDisplayName(widget.uid)], 0.0);
+                    globals.currentOrders[thisUserName], 0.0);
                 Navigator.pop(context);
                 Navigator.pop(context);
               },
@@ -119,7 +127,7 @@ class OrderPageState extends State<OrderPage> {
                 child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text(getDisplayName(widget.uid),
+            Text(thisUserName,
                 style: Theme.of(context).textTheme.headline),
             Text('There are no pending Orders',
                 style: Theme.of(context).textTheme.headline),
@@ -138,19 +146,19 @@ class OrderPageState extends State<OrderPage> {
 
   @override
   Widget build(BuildContext context) {
-    return globals.currentOrders.containsKey([getDisplayName(widget.uid)])
+    return globals.currentOrders.containsKey([thisUserName])
         ? new Scaffold(
             appBar: new AppBar(
               title: new Text('Orders'),
             ),
             body: OrderStructurePage(
                 context: context,
-                name: getDisplayName(widget.uid),
-                selections: globals.currentOrders[getDisplayName(widget.uid)]),
+                name: thisUserName,
+                selections: globals.currentOrders[thisUserName]),
             floatingActionButton: new FloatingActionButton.extended(
                 key: new ValueKey<Key>(new Key('1')),
                 tooltip: 'Done.',
-                backgroundColor: Colors.red,
+//                backgroundColor: Colors.red,
                 icon: new Icon(Icons.payment), //page.fabIcon,
                 label: Text('Complete'),
                 onPressed: () {

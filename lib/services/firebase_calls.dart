@@ -69,7 +69,7 @@ class FirebaseCalls {
     Firestore.instance.runTransaction((transaction) async {
       selectionList.forEach((selection) {
         refSelections.document(selection.selectionId).updateData(map);
-        cost += getItemFromDocId(selection.itemDocId).price;
+        cost += ItemMethod.getItemFromDocId(selection.itemDocId).price;
       });
 
       map.addAll({'uid': uid});
@@ -101,7 +101,7 @@ class FirebaseCalls {
       selectionList.forEach((selection) {
         if (uid == selection.uid) list.add(selection);
       });
-      selectionMap.addAll({getDisplayName(uid): list});
+      selectionMap.addAll({User.getDisplayName(uid): list});
     });
     globals.currentOrders = selectionMap;
     return selectionMap;
