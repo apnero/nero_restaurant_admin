@@ -67,6 +67,7 @@ class OrderStructurePage extends StatelessWidget {
                                 ),
                                 child: new Text(
                                    Item.getItemFromDocId(selection.itemDocId).name, style: Theme.of(context).textTheme.title,)),
+                            Expanded(child:
                             new Wrap(
                               children: _getList(selection.choices.values)
                                   .map<Widget>((String choice) {
@@ -78,7 +79,7 @@ class OrderStructurePage extends StatelessWidget {
                                 );
                               }).toList(),
                             ),
-                          ]));
+                            )]));
                     }).toList(),
                   ),
                 ],
