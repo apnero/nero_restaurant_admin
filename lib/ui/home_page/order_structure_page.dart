@@ -66,7 +66,7 @@ class OrderStructurePage extends StatelessWidget {
                                   right: 20.0,
                                 ),
                                 child: new Text(
-                                   ItemMethod.getItemFromDocId(selection.itemDocId).name, style: Theme.of(context).textTheme.title,)),
+                                   Item.getItemFromDocId(selection.itemDocId).name, style: Theme.of(context).textTheme.title,)),
                             new Wrap(
                               children: _getList(selection.choices.values)
                                   .map<Widget>((String choice) {

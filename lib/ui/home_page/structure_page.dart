@@ -60,11 +60,10 @@ class _StructurePageState extends State<StructurePage> {
             padding: EdgeInsets.symmetric(vertical: 10.0,),
             child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-              Text(ItemMethod.getItemFromDocId(selection.itemDocId).name,
+              Text(Item.getItemFromDocId(selection.itemDocId).name,
                     style: Theme.of(context).textTheme.title,
                   ),
               Container(width:350.0,
-//              height: 90.0,
               child: Center(child: Wrap(
                 spacing: 3.0,
                 runSpacing: 2.0,

@@ -16,6 +16,25 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  Timer timer;
+
+  @override
+  void initState() {
+    super.initState();
+//    timer = new Timer.periodic(new Duration(seconds: 2), (Timer timer) async {
+//      ItemData data = await loadData();
+//      this.setState(() {
+//        _data = <ItemData>[data];
+//      });
+//    });
+  }
+
+
+  @override
+  void dispose() {
+    super.dispose();
+//    timer.cancel();
+  }
 
   Widget _noAdmin(BuildContext context) {
     return new Scaffold(

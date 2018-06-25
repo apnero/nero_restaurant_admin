@@ -44,9 +44,9 @@ class FirebaseCalls {
 
         await refUsers.document(firebaseUser.uid).setData({
           "id": firebaseUser.uid,
-          "photoUrl": firebaseUser.photoUrl,
+          "photoUrl": firebaseUser.photoUrl != null ? firebaseUser.photoUrl:'',
           "email": firebaseUser.email != null ? firebaseUser.email:'',
-          "displayName": firebaseUser.displayName,
+          "displayName": firebaseUser.displayName != null ? firebaseUser.displayName:'',
           "pushToken": pushToken,
           "admin": false,
           "points": 0.0,
@@ -69,7 +69,7 @@ class FirebaseCalls {
     Firestore.instance.runTransaction((transaction) async {
       selectionList.forEach((selection) {
         refSelections.document(selection.selectionId).updateData(map);
-        cost += ItemMethod.getItemFromDocId(selection.itemDocId).price;
+        cost += Item.getItemFromDocId(selection.itemDocId).price;
       });
 
       map.addAll({'uid': uid});

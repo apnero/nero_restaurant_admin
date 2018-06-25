@@ -37,7 +37,8 @@ exports.completeOrder = functions.firestore
 
                 return Promise.all(promises).then((values) => {
                     var userPoints = values[0].get('points')
-                    var userPushToken = values[0].get('pushToken')
+                    if (values[0].get('pushToken') !== null)
+                        var userPushToken = values[0].get('pushToken')
 
                     var totalPoints = userPoints + points
 
@@ -47,12 +48,16 @@ exports.completeOrder = functions.firestore
                             body: 'You now have ' + totalPoints.toFixed(2) + ' points.',
                         },
                     }
-             
+
                     var promises = []
-                    promises.push(admin.messaging().sendToDevice(userPushToken, message))
+                    if (userPushToken !== null)
+                        promises.push(admin.messaging().sendToDevice(userPushToken, message))
                     promises.push(userSnapshot.ref.update({ 'points': totalPoints }))
                     return Promise.all(promises)
 
+                }).then(result => {
+                    console.log('Result: ' ,result)
+                    return (result)
                 })
 
             }).catch((error) => {
@@ -61,7 +66,7 @@ exports.completeOrder = functions.firestore
             })
 
 
-      
+
 
     })
 
@@ -75,7 +80,7 @@ exports.sendOrder = functions.firestore
         console.log('LOGGER -- Trying to sendOrder');
         let name = snap.data().name
         let pushToken = snap.data().pushToken;
-        
+
         var message = {
             notification: {
                 title: 'Thank you for the order.',
@@ -92,7 +97,7 @@ exports.sendOrder = functions.firestore
 
         var promises = [];
         var tokens = [];
-        
+
         db.collection('Users').where('admin', '==', true)
             .get()
             .then(snapshot => {
@@ -104,15 +109,20 @@ exports.sendOrder = functions.firestore
                 return Promise.all(promises).then((values) => {
 
                     values.forEach(value => {
-                        tokens.push(value.get('pushToken'))
+                        if (value.get('pushToken') !== null)
+                            tokens.push(value.get('pushToken'))
                     })
 
-        
+
                     var promises = []
                     promises.push(admin.messaging().sendToDevice(tokens, adminMessage))
-                    promises.push(admin.messaging().sendToDevice(pushToken, message))
+                    if (pushToken !== null)
+                        promises.push(admin.messaging().sendToDevice(pushToken, message))
                     return Promise.all(promises)
 
+                }).then(result => {
+                    console.log('Result: ' ,result)
+                    return (result)
                 })
 
             }).catch((error) => {
@@ -157,14 +167,18 @@ exports.sendNotificationOnCreate = functions.firestore
                 return Promise.all(promises).then((values) => {
 
                     values.forEach(value => {
-                        tokens.push(value.get('pushToken'))
+                        if (value.get('pushToken') !== null)
+                            tokens.push(value.get('pushToken'))
                     })
 
-        
+
                     var promises = []
                     promises.push(admin.messaging().sendToDevice(tokens, message))
                     return Promise.all(promises)
 
+                }).then(result => {
+                    console.log('Result: ' ,result)
+                    return (result)
                 })
 
             }).catch((error) => {

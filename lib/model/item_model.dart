@@ -46,10 +46,6 @@ class Item {
       active: document['active'],
     );
   }
-}
-
-class ItemMethod {
-
   static Item getItemFromDocId(String docId) {
     Item thisItem;
     globals.allItems.forEach((item) {
