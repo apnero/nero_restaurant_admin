@@ -35,14 +35,14 @@ class User {
   }
 
   //for first run after creating id
-  factory User.fromFirebaseUser(FirebaseUser user) {
+  factory User.fromFirebaseUser(FirebaseUser user, String pushToken) {
     return new User(
       email: user.email,
       photoUrl: user.photoUrl,
       id: user.uid,
       displayName: user.displayName,
       admin: false,
-      pushToken: '',
+      pushToken: pushToken,
       points: 0.0,
     );
   }

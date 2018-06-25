@@ -94,11 +94,11 @@ exports.sendOrder = functions.firestore
 
         var adminMessage = {
             notification: {
-                title: 'New Order from' + name + '.',
+                title: 'New Order from ' + name + '.',
                 body: 'You have just received a new order.',
             },
             data: {
-                title: 'New Order from' + name + '.',
+                title: 'New Order from ' + name + '.',
                 body: 'You have just received a new order.',
             },
         };

@@ -21,12 +21,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-//    timer = new Timer.periodic(new Duration(seconds: 2), (Timer timer) async {
-//      ItemData data = await loadData();
-//      this.setState(() {
-//        _data = <ItemData>[data];
-//      });
-//    });
+    timer = new Timer.periodic(new Duration(seconds: 10), (Timer timer) async {
+      this.setState(() {
+      });
+    });
   }
 
 
@@ -60,7 +58,7 @@ class _HomePageState extends State<HomePage> {
 
 
   Widget _body(BuildContext context) {
-    return new FutureBuilder<Map<String, List<Selection>>>(
+    return new SingleChildScrollView(child: FutureBuilder<Map<String, List<Selection>>>(
         future: FirebaseCalls.getOrders(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -81,7 +79,7 @@ class _HomePageState extends State<HomePage> {
             return new Container(
               height: 30.0,
             );
-        });
+        }));
   }
 
   @override

@@ -52,7 +52,7 @@ class FirebaseCalls {
           "points": 0.0,
         });
 
-        globals.currentUser = User.fromFirebaseUser(firebaseUser);
+        globals.currentUser = User.fromFirebaseUser(firebaseUser, pushToken);
       } else
         globals.currentUser = User.fromDocument(userRecord);
     }
