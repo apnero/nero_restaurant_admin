@@ -86,10 +86,18 @@ exports.sendOrder = functions.firestore
                 title: 'Thank you for the order.',
                 body: 'It will be ready to be picked up shortly.',
             },
+            data: {
+                title: 'Thank you for the order.',
+                body: 'It will be ready to be picked up shortly.',
+            }
         };
 
         var adminMessage = {
             notification: {
+                title: 'New Order from' + name + '.',
+                body: 'You have just received a new order.',
+            },
+            data: {
                 title: 'New Order from' + name + '.',
                 body: 'You have just received a new order.',
             },
@@ -109,8 +117,10 @@ exports.sendOrder = functions.firestore
                 return Promise.all(promises).then((values) => {
 
                     values.forEach(value => {
-                        if (value.get('pushToken') !== null)
+                        if (value.get('pushToken') !== null){
                             tokens.push(value.get('pushToken'))
+                            console.log('push: ',value.get('pushToken'))
+                        }
                     })
 
 
@@ -148,6 +158,10 @@ exports.sendNotificationOnCreate = functions.firestore
 
         var message = {
             notification: {
+                title: title,
+                body: msg
+            },
+            data: {
                 title: title,
                 body: msg
             },
