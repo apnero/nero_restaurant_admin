@@ -133,18 +133,22 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _checkCurrentUser() async {
-    _currentUser = await _auth.currentUser();
-    _currentUser?.getIdToken(refresh: true);
+    try {
+      _currentUser = await _auth.currentUser();
+      _currentUser?.getIdToken(refresh: true);
 
-    if(_currentUser != null)
-      FirebaseCalls.saveUser(_currentUser, pushToken);
+      if (_currentUser != null) FirebaseCalls.saveUser(_currentUser, pushToken);
 
-    _listener = _auth.onAuthStateChanged.listen((FirebaseUser user) {
-      setState(() {
-        _currentUser = user;
-        FirebaseCalls.saveUser(_currentUser, pushToken);
+      _listener = _auth.onAuthStateChanged.listen((FirebaseUser user) {
+        setState(() {
+          _currentUser = user;
+          if (_currentUser != null)
+            FirebaseCalls.saveUser(_currentUser, pushToken);
+        });
       });
-    });
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }
 

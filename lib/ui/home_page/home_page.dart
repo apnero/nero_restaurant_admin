@@ -93,14 +93,13 @@ class _HomePageState extends State<HomePage> {
           icon: new Icon(Icons.scanner),
           key: new ValueKey<Key>(new Key('1')),
           label: new Text('Scan'),
-//          backgroundColor: Colors.red,
-          onPressed: () =>  scan(),
-//              Navigator.push(
-//            context,
-//            new MaterialPageRoute(
-//              builder: (context) => new OrderPage(uid: 'chKH3tF4V7ZEh1Pw9qHnuljeuHt1'),
-//            ),
-//          )
+          onPressed: () =>  //scan(),
+              Navigator.push(
+            context,
+            new MaterialPageRoute(
+              builder: (context) => new OrderPage(uid: 'aW41YUJkYthZ1CvBsbjHNOjAdEQ2'),
+            ),
+          )
       ),
       drawer: new Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
