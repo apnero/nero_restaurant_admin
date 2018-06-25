@@ -63,7 +63,7 @@ class _StructurePageState extends State<StructurePage> {
               Text(Item.getItemFromDocId(selection.itemDocId).name,
                     style: Theme.of(context).textTheme.title,
                   ),
-              Container(width:350.0,
+              Expanded(
               child: Center(child: Wrap(
                 spacing: 3.0,
                 runSpacing: 2.0,
