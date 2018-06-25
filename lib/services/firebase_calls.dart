@@ -36,34 +36,37 @@ class FirebaseCalls {
   static Future saveUser(FirebaseUser firebaseUser, String pushToken) async {
     final refUsers = Firestore.instance.collection('Users');
     DocumentSnapshot userRecord;
+
     if (firebaseUser != null) {
       userRecord = await refUsers.document(firebaseUser.uid).get();
 
       if (userRecord.data == null) {
         // no user record exists, time to create
-
+        List<dynamic> list = [];
+        if (pushToken != null || pushToken != '') list.add(pushToken);
         await refUsers.document(firebaseUser.uid).setData({
           "id": firebaseUser.uid,
-          "photoUrl": firebaseUser.photoUrl != null
-              ? firebaseUser.photoUrl
-              : '',
+          "photoUrl":
+          firebaseUser.photoUrl != null ? firebaseUser.photoUrl : '',
           "email": firebaseUser.email != null ? firebaseUser.email : '',
-          "displayName": firebaseUser.displayName != null ? firebaseUser
-              .displayName : '',
-          pushToken != null && pushToken != '' ? "pushToken": [pushToken]: null,
+          "displayName":
+          firebaseUser.displayName != null ? firebaseUser.displayName : '',
+          "pushToken": list,
           "admin": false,
           "points": 0.0,
         });
 
         globals.currentUser = User.fromFirebaseUser(firebaseUser, [pushToken]);
-      } else if (!userRecord.data['pushToken'].contains(pushToken) && pushToken != null && pushToken != '') {
+      } else if (!userRecord.data['pushToken'].contains(pushToken) &&
+          pushToken != null &&
+          pushToken != '') {
         List<dynamic> list = [];
         list.addAll(userRecord.data['pushToken']);
         list.add(pushToken);
-        await refUsers.document(firebaseUser.uid).updateData(
-            {'pushToken': list});
-      }
-      else
+        await refUsers
+            .document(firebaseUser.uid)
+            .updateData({'pushToken': list});
+      } else
         globals.currentUser = User.fromDocument(userRecord);
     }
   }
