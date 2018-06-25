@@ -37,31 +37,34 @@ class FirebaseCalls {
     final refUsers = Firestore.instance.collection('Users');
     DocumentSnapshot userRecord;
     if (firebaseUser != null) {
-      try {
-        userRecord = await refUsers.document(firebaseUser.uid).get();
+      userRecord = await refUsers.document(firebaseUser.uid).get();
 
-        if (userRecord.data == null) {
-          // no user record exists, time to create
+      if (userRecord.data == null) {
+        // no user record exists, time to create
 
-          await refUsers.document(firebaseUser.uid).setData({
-            "id": firebaseUser.uid,
-            "photoUrl":
-                firebaseUser.photoUrl != null ? firebaseUser.photoUrl : '',
-            "email": firebaseUser.email != null ? firebaseUser.email : '',
-            "displayName": firebaseUser.displayName != null
-                ? firebaseUser.displayName
-                : '',
-            "pushToken": pushToken,
-            "admin": false,
-            "points": 0.0,
-          });
+        await refUsers.document(firebaseUser.uid).setData({
+          "id": firebaseUser.uid,
+          "photoUrl": firebaseUser.photoUrl != null
+              ? firebaseUser.photoUrl
+              : '',
+          "email": firebaseUser.email != null ? firebaseUser.email : '',
+          "displayName": firebaseUser.displayName != null ? firebaseUser
+              .displayName : '',
+          pushToken != null && pushToken != '' ? "pushToken": [pushToken]: null,
+          "admin": false,
+          "points": 0.0,
+        });
 
-          globals.currentUser = User.fromFirebaseUser(firebaseUser, pushToken);
-        } else
-          globals.currentUser = User.fromDocument(userRecord);
-      } catch (e) {
-        print(e.toString());
+        globals.currentUser = User.fromFirebaseUser(firebaseUser, [pushToken]);
+      } else if (!userRecord.data['pushToken'].contains(pushToken) && pushToken != null && pushToken != '') {
+        List<dynamic> list = [];
+        list.addAll(userRecord.data['pushToken']);
+        list.add(pushToken);
+        await refUsers.document(firebaseUser.uid).updateData(
+            {'pushToken': list});
       }
+      else
+        globals.currentUser = User.fromDocument(userRecord);
     }
   }
 
