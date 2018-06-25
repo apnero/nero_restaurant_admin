@@ -69,6 +69,9 @@ class OrderStructurePage extends StatelessWidget {
                                    Item.getItemFromDocId(selection.itemDocId).name, style: Theme.of(context).textTheme.title,)),
                             Expanded(child:
                             new Wrap(
+
+                              spacing: 3.0,
+                              runSpacing: 2.0,
                               children: _getList(selection.choices.values)
                                   .map<Widget>((String choice) {
                                 return new ChoiceChip(
