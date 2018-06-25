@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
   FirebaseMessaging _firebaseMessaging = new FirebaseMessaging();
 
   FirebaseUser _currentUser;
-  String pushToken = [];
+  String pushToken = '';
 
   @override
   void initState() {
