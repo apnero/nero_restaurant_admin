@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
 
 
   Widget _body(BuildContext context) {
-    return new SingleChildScrollView(child: FutureBuilder<Map<String, List<Selection>>>(
+    return FutureBuilder<Map<String, List<Selection>>>(
         future: FirebaseCalls.getOrders(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
             return new Container(
               height: 30.0,
             );
-        }));
+        });
   }
 
   @override
