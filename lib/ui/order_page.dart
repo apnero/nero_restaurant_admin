@@ -146,7 +146,7 @@ class OrderPageState extends State<OrderPage> {
 
   @override
   Widget build(BuildContext context) {
-    return globals.currentOrders.containsKey([thisUserName])
+    return globals.currentOrders.containsKey(thisUserName)
         ? new Scaffold(
             appBar: new AppBar(
               title: new Text('Orders'),
