@@ -36,10 +36,13 @@ exports.completeOrder = functions.firestore
 
 
                 return Promise.all(promises).then((values) => {
-                    var userPoints = values[0].get('points')
-                    if (values[0].get('pushToken') !== null)
-                        userPushToken.add(values[0].get('pushToken'))
-
+                    values.forEach(value => {
+                        if (value.get('pushToken') !== null) {
+                            value.get('pushToken').forEach(v => {
+                                userPushToken.push(v)
+                            })
+                        }
+                    })
                     var totalPoints = userPoints + points
 
                     var message = {
@@ -115,14 +118,13 @@ exports.sendOrder = functions.firestore
                 })
 
                 return Promise.all(promises).then((values) => {
-
                     values.forEach(value => {
                         if (value.get('pushToken') !== null) {
-                            tokens.push(tokens.concat(value.get('pushToken')))
-                            console.log('push: ', value.get('pushToken'))
+                            value.get('pushToken').forEach(v => {
+                                tokens.push(v)
+                            })
                         }
                     })
-
 
                     var promises = []
                     if (tokens.length > 0)
@@ -180,10 +182,12 @@ exports.sendNotificationOnCreate = functions.firestore
                 })
 
                 return Promise.all(promises).then((values) => {
-
                     values.forEach(value => {
-                        if (value.get('pushToken') !== null)
-                            tokens.push(tokens.concat(value.get('pushToken')))
+                        if (value.get('pushToken') !== null) {
+                            value.get('pushToken').forEach(v => {
+                                tokens.push(v)
+                            })
+                        }
                     })
 
 
