@@ -55,7 +55,15 @@ class _HomePageState extends State<HomePage> {
        );
   }
 
-
+  Widget _waitScreen(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Please Wait'),
+      ),
+      body: Center(
+          child: CircularProgressIndicator()),
+    );
+  }
 
   Widget _body(BuildContext context) {
     return FutureBuilder<Map<String, List<Selection>>>(
@@ -128,7 +136,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
-    ):globals.currentUser!= null ? _noAdmin(context): new Container();
+    ):globals.currentUser!= null ? _noAdmin(context): _waitScreen(context);
   }
 
 

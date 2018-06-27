@@ -61,6 +61,8 @@ class FirebaseCalls {
           pushToken != null &&
           pushToken != '') {
         List<dynamic> list = [];
+
+        globals.currentUser = User.fromDocument(userRecord);
         list.addAll(userRecord.data['pushToken']);
         list.add(pushToken);
         await refUsers
