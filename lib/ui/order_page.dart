@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:nero_restaurant_admin/model/user_model.dart';
 import 'package:nero_restaurant_admin/services/firebase_calls.dart';
-import 'package:nero_restaurant_admin/ui/home_page/order_structure_page.dart';
+import 'package:nero_restaurant_admin/ui/order_structure_page.dart';
 import 'package:nero_restaurant_admin/ui/pricing_item.dart';
 import 'package:nero_restaurant_admin/model/selection_price_model.dart';
 import 'package:nero_restaurant_admin/model/selection_model.dart';
@@ -151,15 +151,16 @@ class OrderPageState extends State<OrderPage> {
             appBar: new AppBar(
               title: new Text('Orders'),
             ),
-            body: Column(children: <Widget>[
+            body: SingleChildScrollView(child: Column(children: <Widget>[
               OrderStructurePage(
                   context: context,
                   name: thisUserName,
                   selections: globals.currentOrders[thisUserName]),
               PricingItem(context: context, selectionPriceList: globals.currentOrders[thisUserName].map<SelectionPrice>((Selection selection) {
                 return SelectionPrice.from(selection.selectionId, Item.getItemFromDocId(selection.itemDocId).price);},
-              ).toList())
-            ]),
+              ).toList()),
+              SizedBox(height: 80.0,),
+            ])),
             floatingActionButton: new FloatingActionButton.extended(
                 key: new ValueKey<Key>(new Key('1')),
                 tooltip: 'Done.',

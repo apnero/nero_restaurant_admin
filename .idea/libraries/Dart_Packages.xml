@@ -117,7 +117,7 @@
         <entry key="firebase_messaging">
           <value>
             <list>
-              <option value="C:/Program Files/Android/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-1.0.2/lib" />
+              <option value="C:/Program Files/Android/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-1.0.3/lib" />
             </list>
           </value>
         </entry>
@@ -511,7 +511,7 @@
       <root url="file://C:/Program Files/Android/flutter/.pub-cache/hosted/pub.dartlang.org/duration-1.0.0/lib" />
       <root url="file://C:/Program Files/Android/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.5.11/lib" />
       <root url="file://C:/Program Files/Android/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.4/lib" />
-      <root url="file://C:/Program Files/Android/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-1.0.2/lib" />
+      <root url="file://C:/Program Files/Android/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-1.0.3/lib" />
       <root url="file://C:/Program Files/Android/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_cache_manager-0.1.1/lib" />
       <root url="file://C:/Program Files/Android/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-1.1.1/lib" />
       <root url="file://C:/Program Files/Android/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_firebase_ui-0.0.6/lib" />
