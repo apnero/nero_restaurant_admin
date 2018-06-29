@@ -37,6 +37,7 @@ exports.completeOrder = functions.firestore
 
                 return Promise.all(promises).then((values) => {
                     values.forEach(value => {
+                        userPoints = value.get('points')
                         if (value.get('pushToken') !== null) {
                             value.get('pushToken').forEach(v => {
                                 userPushToken.push(v)
@@ -47,6 +48,10 @@ exports.completeOrder = functions.firestore
 
                     var message = {
                         notification: {
+                            title: 'You have earned ' + points.toFixed(2) + ' points for this visit.',
+                            body: 'You now have ' + totalPoints.toFixed(2) + ' points.',
+                        },
+                        data: {
                             title: 'You have earned ' + points.toFixed(2) + ' points for this visit.',
                             body: 'You now have ' + totalPoints.toFixed(2) + ' points.',
                         },

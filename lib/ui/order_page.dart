@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:nero_restaurant_admin/model/user_model.dart';
 import 'package:nero_restaurant_admin/services/firebase_calls.dart';
 import 'package:nero_restaurant_admin/ui/home_page/order_structure_page.dart';
+import 'package:nero_restaurant_admin/ui/pricing_item.dart';
+import 'package:nero_restaurant_admin/model/selection_price_model.dart';
+import 'package:nero_restaurant_admin/model/selection_model.dart';
+import 'package:nero_restaurant_admin/model/item_model.dart';
 
 class OrderPage extends StatefulWidget {
   OrderPage({Key key, this.uid}) : super(key: key);
@@ -17,13 +21,11 @@ class OrderPageState extends State<OrderPage> {
   String thisUserName = '';
   final _controller = new TextEditingController();
 
-
   @override
   void initState() {
     thisUserName = User.getDisplayName(widget.uid);
     super.initState();
   }
-
 
   @override
   void dispose() {
@@ -56,8 +58,8 @@ class OrderPageState extends State<OrderPage> {
             new FlatButton(
               child: new Text('OK'),
               onPressed: () {
-                FirebaseCalls.completeOrder(widget.uid,
-                    globals.currentOrders[thisUserName], 0.0);
+                FirebaseCalls.completeOrder(
+                    widget.uid, globals.currentOrders[thisUserName], 0.0);
                 Navigator.pop(context);
                 Navigator.pop(context);
               },
@@ -78,7 +80,6 @@ class OrderPageState extends State<OrderPage> {
           content: new SingleChildScrollView(
             child: new ListBody(
               children: <Widget>[
-
                 new TextFormField(
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
                   controller: _controller,
@@ -105,8 +106,8 @@ class OrderPageState extends State<OrderPage> {
             new FlatButton(
               child: new Text('OK'),
               onPressed: () {
-                FirebaseCalls.completeOrder(widget.uid, [],
-                    double.parse(_controller.text));
+                FirebaseCalls.completeOrder(
+                    widget.uid, [], double.parse(_controller.text));
                 Navigator.pop(context);
                 Navigator.pop(context);
               },
@@ -127,8 +128,7 @@ class OrderPageState extends State<OrderPage> {
                 child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text(thisUserName,
-                style: Theme.of(context).textTheme.headline),
+            Text(thisUserName, style: Theme.of(context).textTheme.headline),
             Text('There are no pending Orders',
                 style: Theme.of(context).textTheme.headline),
           ],
@@ -151,10 +151,15 @@ class OrderPageState extends State<OrderPage> {
             appBar: new AppBar(
               title: new Text('Orders'),
             ),
-            body: OrderStructurePage(
-                context: context,
-                name: thisUserName,
-                selections: globals.currentOrders[thisUserName]),
+            body: Column(children: <Widget>[
+              OrderStructurePage(
+                  context: context,
+                  name: thisUserName,
+                  selections: globals.currentOrders[thisUserName]),
+              PricingItem(context: context, selectionPriceList: globals.currentOrders[thisUserName].map<SelectionPrice>((Selection selection) {
+                return SelectionPrice.from(selection.selectionId, Item.getItemFromDocId(selection.itemDocId).price);},
+              ).toList())
+            ]),
             floatingActionButton: new FloatingActionButton.extended(
                 key: new ValueKey<Key>(new Key('1')),
                 tooltip: 'Done.',

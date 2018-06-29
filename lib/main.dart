@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
 
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) {
-        _onMessageDialog(context, message);
+        if(message.isNotEmpty) _onMessageDialog(context, message);
         print('on message $message');
       },
       onResume: (Map<String, dynamic> message) {
