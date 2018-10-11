@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     Text(globals.currentUser.displayName,
                         style: Theme.of(context).textTheme.headline),
-                Text(globals.currentUser.email,
+                Text(globals.currentUser.email != null ? globals.currentUser.email:'',
                         style: Theme.of(context).textTheme.headline),
                     Text('Please request admin access.',
                         style: Theme.of(context).textTheme.headline),
